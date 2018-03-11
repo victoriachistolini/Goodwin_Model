@@ -13,4 +13,6 @@ such as a single oscillating cell and successful synchronization of the model ru
 
 ## Sources:
 [1] “The effects of non-self-sustained oscillators on the entrainment ability of the suprachiasmatic nucleus”; Gu, Tang, Rohling & Yang; Nature Scientific Reports; 2016
+
+
 [2] “Spontaneous Synchronization of Coupled Circadian Oscillators”; Gonze, Bernard, Waltermann, Kramer, Herzel; BioPhysics J; 2005
