@@ -1,3 +1,6 @@
+% given a set of base parameters creates new parameter such that
+% each parameter is scaled by up to +/- 10 % of its value 
+
 function ret = create_paramsets(base_params, num_params)
 
     ret = ones(num_params,1);

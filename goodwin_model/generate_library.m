@@ -1,3 +1,9 @@
+% script used to create the sustained and damped library 
+% parameter sets are chose 'by hand' based on qualitative characteristics
+% of either oscialtions maintaining high amplitude (sustained) 
+% or decline of a decline of amplitude over time (damped) 
+
+
 num_cells = 2;
 num_params = 17;
 y = ones(1,num_cells*4);
@@ -28,22 +34,25 @@ Kc = 1;
 K  = 0.5;       % sensitivity to VIP
 
 
-%pulse function
+%pulse function for light input (not used here)
 x_fun = @(t)(step_on_end(t,0.5,0.7));
 
 base_params = [v1, K1, n, v2, K2, k3, v4, K4, k5, v6, K6, k7, v8, K8, vc, Kc, K];
 
 new_params(:,1) = base_params;
 
+% generate a new guassian scaled parameter set
 for i= 1:num_cells-1
-   
     new_params(:,i+1)= create_paramsets(base_params,num_params);
 end
 
 
+% simulate system 
 [t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),new_params,x_fun,num_cells);
 
 
-% getting awesome stuff
+% plot clock protein path 
 figure; plot( t(100:8000), z(100:8000,2) )
+
+% print out parameter set 
 new_params(:,2)'

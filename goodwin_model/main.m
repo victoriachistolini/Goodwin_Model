@@ -54,7 +54,7 @@ plot(t(1:501),vip,'Linewidth',2);
 legend('Clock Gene', 'Clock Protein', 'Inhibitor', 'VIP');
 
 
-%% Cell 2 graph the goodwin model with published parameters and another cell
+%% Cell 2 graph the goodwin model with published parameters and n_cell other cells
 
 num_cells = 10;
 num_params = 17;
@@ -102,11 +102,35 @@ end
 [t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),new_params,x_fun,num_cells);
 
 
-% getting awesome stuff
+% plot the clock protein of all 10 cells
 figure; plot( t(2500:6000), z(2500:6000,1:10) )
 
 
-%% Cell 3 generate param sets 
+%% Cell 3 figure 1A 
 
+
+
+
+
+
+% Define Model Parameters
+% These are the published parameters for the Goodwin Model.
+
+
+%pulse function
+x_fun = @(t)(step_on_end(t,0.5,0.7));
+
+base_params = [v1, K1, n, v2, K2, k3, v4, K4, k5, v6, K6, k7, v8, K8, vc, Kc, K];
+base_params
+
+new_params(:,1) = base_params;
+
+for i= 1:num_cells-1
+   
+    new_params(:,i+1)= create_paramsets(base_params,num_params);
+end
+
+
+[t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),new_params,x_fun,num_cells);
 
 
