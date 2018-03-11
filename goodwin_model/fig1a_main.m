@@ -3,6 +3,8 @@
 num_cells = 20;
 num_params = 17;
 num_points = 10;
+
+%output vectors
 y = ones(1,num_cells*4);
 time_points = zeros(num_points+1,1);
 FRPs = zeros(num_points+1,1);
@@ -10,17 +12,18 @@ FRPs = zeros(num_points+1,1);
 %pulse function
 x_fun = @(t)(step_on_end(t,0.5,0.7));
 
+% grab sample of sustained / damped cells
+params_sustain = sustained_library(num_cells);
+params_damped  = damped_library(num_cells);
+
 
 for i= 0:num_points
     
    num_damped = round(i*0.1*num_cells, 0);
    num_sustain = num_cells-num_damped;
    
-   % grab sample of sustained / damped cells
-   params_sustain = sustained_library(num_sustain);
-   params_damped  = damped_library(num_damped);
-   params = [params_sustain,params_damped];
-   
+   params = get_params(num_damped, num_sustain,params_damped, params_sustain);
+    
    % simulate system
    [t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),params,x_fun,num_cells);
    
