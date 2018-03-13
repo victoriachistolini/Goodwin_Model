@@ -5,7 +5,6 @@ num_params = 17;
 num_points = 10;
 
 %output vectors
-y = ones(1,num_cells*4);
 time_points = zeros(num_points+1,1);
 FRPs = zeros(num_points+1,1);
 
@@ -21,6 +20,12 @@ for i= 0:num_points
     
    num_damped = round(i*0.1*num_cells, 0);
    num_sustain = num_cells-num_damped;
+   
+   
+   % initial conditions same for damped/sustained except damped =1.5 and sustained =4
+   ic = [0.05 0.5 4 1.5 1]; 
+   y = repelem(ic,[num_cells num_cells num_sustain num_damped num_cells]);
+  
    
    params = get_params(num_damped, num_sustain,params_damped, params_sustain);
     

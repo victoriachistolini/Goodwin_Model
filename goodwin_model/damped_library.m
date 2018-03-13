@@ -48,13 +48,13 @@ pr18 = 0.01/0.2;
 
 
 %data about oscillators 
-param_ratios = [pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9, pr10, pr11,pr12,pr13,pr14,pr15,pr16,pr17,pr18,pr19,pr20];
+param_ratios = [pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9, pr10, pr11,pr12,pr13,pr14,pr15,pr16,pr17,pr18];
 
 % each row is a cell in matrix
-param_sets = [p1;p2;p3;p4;p5;p6;p7;p8;p9;p10;p11;p12;p13;p14;p15;p16;p17;p18;p19;p20];
+param_sets = [p1;p2;p3;p4;p5;p6;p7;p8;p9;p10;p11;p12;p13;p14;p15;p16;p17;p18];
 
 % draw random sample of cells with replacement
-index = randsample(1:20, n_cells, true);
+index = randsample(1:18, n_cells, true);
 
 % return matrix such that each column is a cell
 psets = param_sets(index,:)';

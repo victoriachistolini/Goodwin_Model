@@ -7,14 +7,22 @@
 
 % ******  generate 2 new damped sets; all current damped sets work for the ic= [0.05 0.5 1.5 1]************
 num_cells = 1;
+num_damped=4;
+num_sustained=0;
+num_total_cells =4;
 num_params = 17;
-y = ones(1,num_cells*4);
-y = [0.05    0.5   1.5    1];
+
+damped_initialConditions = [0.05    0.5   1.5    1]; % damped set
+sustain_initialConditions = [0.05    0.5   4    1];   % sustained set 
+
+ic = [0.05 0.5 1.5 4 1]; % initial conditions same for damped/sustained except damped =1.5 and sustained =4
+
+y = repelem(ic,[num_total_cells num_total_cells num_damped num_sustained num_total_cells]);
 
 new_params = ones(num_params,num_cells);
 
 
-p1 =[ 0.6309    1.0760    3.7371    0.3289    1.0177    0.6785    0.3454    1.0595    0.7733    0.3431    1.0328    0.3417    1.0230    1.0440    0.3753    1.0275    0.5301];
+p1 =[ 0.7070    0.9455    4.1214    0.3290    1.0490    0.7518    0.4099    0.9806    0.5503    0.3206    1.1355    0.3125    1.0961    1.0124    0.4575    0.8039    0.4901];
 
 new_params(:,1) = p1';
 
