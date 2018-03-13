@@ -36,8 +36,8 @@ q=x_fun(t); % eventually a function of light input
 
 F = mean(v);
 %Model: system of differential equations
-mean_field_response = vc.*((K.*F) / (Kc + K.*F));
-%mean_field_response=0;
+%mean_field_response = vc.*((K.*F) / (Kc + K.*F));
+mean_field_response=0;
 
 %dx/dt  We can include light here
 rates(1:n_cells,1) = v1.*( K1.^n ./ (K1.^n + z.^n)) - v2.*( x ./ (K2 + x)) + mean_field_response + L;
