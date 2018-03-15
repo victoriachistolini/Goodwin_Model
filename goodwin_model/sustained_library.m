@@ -1,7 +1,7 @@
 % randomly selects n_cell number of parameter sets from library
 % seletion is done with replacement
 % includes the published parameter set
-function psets = sustained_library(n_cells)
+function psets = sustained_library(n_cells,sample)
 
 p1 = [0.6534    0.8835   3.7102    0.3550    1.0196    0.7158    0.3477    1.0092    0.6833    0.3651    0.9319    0.3580    0.9576    0.9833    0.4111    1.0520    0.4721];
 p2 = [0.7441    1.0330   3.9864    0.3466    0.9891    0.6894    0.3504    1.0026    0.7289    0.3767    1.0233    0.3463    1.0313    1.0092    0.3794    1.0475    0.5077];
@@ -56,9 +56,12 @@ param_ratios = [pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10,pr11,pr12,pr13,pr14,pr1
 
 % each row is a cell in matrix
 param_sets = [p1;p2;p3;p4;p5;p6;p7;p8;p9;p10;p11;p12;p13;p14;p15;p16;p17;p18;p19;p20;p21;p22];
+if sample == 1
+    % draw random sample of cells with replacement
+    index = randsample(1:21, n_cells, true);
 
-% draw random sample of cells with replacement
-index = randsample(1:21, n_cells, true);
-
-% return matrix such that each column is a cell
-psets = param_sets(index,:)';
+    % return matrix such that each column is a cell
+    psets = param_sets(index,:)';
+else
+    psets = param_sets;
+end
