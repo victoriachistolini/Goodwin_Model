@@ -6,7 +6,7 @@
 
 num_cells = 2;
 num_params = 17;
-y = ones(1,num_cells*4);
+y = [0.05 0.5 .5 0.2 0.05 0.5 .5 0.2];
 
 new_params = ones(num_params,num_cells);
 
@@ -52,7 +52,7 @@ end
 
 
 % plot clock protein path 
-figure; plot( t(100:8000), z(100:8000,2) )
+figure; plot( t, z(:,2) )
 
 % print out parameter set 
 new_params(:,2)'
