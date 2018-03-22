@@ -48,7 +48,7 @@ end
 
 
 % simulate system 
-[t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),new_params,x_fun,num_cells);
+[t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),new_params,x_fun,num_cells,1);
 
 
 % plot clock protein path 

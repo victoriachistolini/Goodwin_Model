@@ -101,7 +101,7 @@ p60 =[0.7578    0.9185    3.7863   0.3585    0.9899    0.5862    0.2970    1.102
 param_sets = [p1;p2;p3;p4;p5;p6;p7;p8;p9;p10;p11;p12;p13;p14;p15;p16;p17;p18;p19;p20;p21;p22;p23;p24;p25;p26;p27;p28;p29;p30;p31;p32;p33;p34;p35;p36;p37;p38;p39;p40;p41;p42;p43;p44;p45;p46;p47;p48;p49;p50;p51;p52;p53;p54;p55;p56;p57;p58;p59;p60];
 if sample == 1
     % draw random sample of cells with replacement
-    index = randsample(1:21, n_cells, true);
+    index = randsample(1:60, n_cells, true);
 
     % return matrix such that each column is a cell
     psets = param_sets(index,:)';

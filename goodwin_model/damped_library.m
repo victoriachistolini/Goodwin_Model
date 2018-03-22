@@ -88,7 +88,7 @@ param_sets = [p1;p2;p3;p4;p5;p6;p7;p8;p9;p10;p11;p12;p13;p14;p15;p16;p17;p18;p19
 
 if sample == 1
     % draw random sample of cells with replacement
-    index = randsample(1:18, n_cells, true);
+    index = randsample(1:50, n_cells, true);
 
     % return matrix such that each column is a cell
     psets = param_sets(index,:)';
