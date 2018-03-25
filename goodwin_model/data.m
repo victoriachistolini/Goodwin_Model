@@ -41,14 +41,31 @@ FRPs_moderate =[ 33.9500
         32.7000
     ];
 
+
+ % strenght 2.3
+  
+ FRPs_strong =[ 38.5500 
+                37.5000 
+                36.6750 
+                36.8500 
+                35.7000 
+                35.3250 
+                36.6500 
+                34.9000 
+                34.4000 
+                34.5000 
+                35.5 ]; 
+  
+
 figure;
 plot( ts, FRPs_weak);
 
 hold on;
 plot( ts, FRPs_moderate);
+plot( ts, FRPs_strong);
 
 xlabel('Percent Damped Oscilators');
 ylabel('FRP');
-legend('Coupling = 1.5', 'Coupling = 2');
-ylim([29 34])
+legend('Coupling = 1.5', 'Coupling = 2', 'Coupling = 2.3');
+%ylim([29 34])
 
