@@ -1,7 +1,7 @@
 % defines system of differential equations for Goodwin Model with mean
 % field coupling
 
-function rates = goodwin(t,statevars, params,x_fun, n_cells,coupling_strength)
+function rates = goodwin(t,statevars, params,x_fun, n_cells,coupling_strength, light_strenght)
 
 % Define State Variables
 
@@ -26,13 +26,13 @@ K6 = params(11,:);
 k7 = params(12,:); % rate constant
 v8 = params(13,:); % rate constant
 K8 = params(14,:);
-L  = 0;
+%L  = 0;
 vc = params(15,:);
 Kc = params(16,:);
 K  = params(17,:);  % sensitivity to VIP
 
 
-q=x_fun(t); % eventually a function of light input 
+L=x_fun(t); % eventually a function of light input 
 
 F = mean(v);
 %Model: system of differential equations
@@ -40,7 +40,7 @@ mean_field_response = vc.*((K.*F) / (Kc + K.*F));
 %mean_field_response=0;
 
 %dx/dt  We can include light here
-rates(1:n_cells,1) = v1.*( K1.^n ./ (K1.^n + z.^n)) - v2.*( x ./ (K2 + x)) + coupling_strength*mean_field_response + L;
+rates(1:n_cells,1) = v1.*( K1.^n ./ (K1.^n + z.^n)) - v2.*( x ./ (K2 + x)) + coupling_strength*mean_field_response + light_strenght*L;
 
 %dy/dt
 rates(n_cells+1:2*n_cells,1) = k3.*x - v4.*( y ./ (K4 + y));

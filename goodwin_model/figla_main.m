@@ -23,7 +23,7 @@ y = repelem(ic,[num_cells num_cells num_sustain num_damped num_cells]);
 params = get_params(num_damped, num_sustain,params_damped, params_sustain);
     
 % simulate weak system
-[t,z] = ode15s(@goodwin,0:0.1:2000, y,odeset('MaxStep',0.1),params,x_fun,num_cells,2.3);
+[t,z] = ode15s(@goodwin,0:0.1:2000, y,odeset('MaxStep',0.1),params,x_fun,num_cells,2.3,0);
    
 % determine FRP
 p_mean = mean(z(18000:20000,1:num_cells),2);
