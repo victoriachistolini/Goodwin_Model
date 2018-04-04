@@ -5,15 +5,15 @@ num_params = 17;
 
 
 %pulse function
-x_fun = @(t)(step_on_end(t,32));
+x_fun = @(t)(step_on_end(t,30.5));
 
 % grab sample of sustained / damped cells
 params_sustain = sustained_library(num_cells,1);
 params_damped  = damped_library(num_cells,1);
 
 
-num_damped = 50;
-num_sustain = 50;
+num_damped = 60;
+num_sustain = 40;
 % initial conditions same for damped/sustained except damped =1.5 and sustained =4
 
 ic = [0.05 0.5 4 1.5 1]; 
@@ -26,15 +26,15 @@ params = get_params(num_damped, num_sustain,params_damped, params_sustain);
 [t,z] = ode15s(@goodwin,0:0.1:1000, y,odeset('MaxStep',0.1),params,x_fun,num_cells,2,0.0005);
    
 % determine FRP
-p_mean = mean(z(8000:10000,1:num_cells),2);
-per = getPeriod(t(8000:10000), p_mean);
+p_mean = mean(z(4000:5000,1:num_cells),2);
+per = getPeriod(t(4000:5000), p_mean);
 
 %figure;
 %plot( t, z(:,1:num_cells));
 
 
 figure;
-plot( t(8000:10000), z(8000:10000,1:num_cells));
+plot( t(4000:5000), z(4000:5000,1:num_cells));
 
 hold on;
-plot( t(8000:10000), p_mean,'LineWidth',8);
+plot( t(4000:5000), p_mean,'LineWidth',8);
