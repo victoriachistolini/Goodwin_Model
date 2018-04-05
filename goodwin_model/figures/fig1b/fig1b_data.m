@@ -8,7 +8,12 @@
           33.70    30.04
           34.78    30.76
           33.40    28.70
-          33.1     22.76
+          33.10    22.76
+          33.30    22.06
+          33.50    19.63
+          32.50    10.00
+          33.80    9.920
+          
   ];
         
 difs = LLEs(:,1) - LLEs(:,2);
@@ -23,7 +28,9 @@ normalized_lle = 34*(1-difs./LLEs(:,1));
            33.70  32.2
            34.78  31.38
            33.40  32.65
-           33.1   31.90
+           33.10  31.90
+           33.30  31.30
+           33.50  6
   ];
 
 difs = LLE1s(:,1) - LLE1s(:,2);
@@ -38,8 +45,9 @@ normalized_lle1 = 34*(1-difs./LLE1s(:,1));
            33.70  32.92
            34.78  33.50
            33.40  33.00
-           33.1   32.80
-          
+           33.10  32.80
+           33.30  21.75
+           33.50 6
            
            ];
 
@@ -52,15 +60,19 @@ t = [0
       0.3
       0.4
       0.5
-      0.6];
+      0.6
+      0.7
+      0.8
+      0.9
+      1];
 
 figure;
 plot( t, normalized_lle);
 
-hold on;
-plot( t, normalized_lle1);
-plot( t, normalized_lle2);
+%hold on;
+%plot( t, normalized_lle1);
+%plot( t, normalized_lle2);
 
 xlabel('Percent Damped Oscilators');
 ylabel('LLE');
-legend('K = 0.005', 'K = 0.001', 'K = 0.0005');
+legend('K = 0.005');
