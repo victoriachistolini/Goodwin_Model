@@ -65,4 +65,4 @@ plot( t(18000:20000), p_dm_mean_sustained,'LineWidth',2);
 plot( t(18000:20000), p_dm_mean_damped,'LineWidth',2);
 xlabel('time (hours)');
 ylabel('FRP');
-legend('VL Sustained','DM', 'VL Damped');
+legend('VL Sustained','DM Sustained', 'DM Damped');
