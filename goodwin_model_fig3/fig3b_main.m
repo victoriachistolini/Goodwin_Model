@@ -13,19 +13,19 @@ num_params = 17;
 num_vl = 0.25*num_cells;
 num_dm = 0.75*num_cells;
 
-num_vl_damped = 25;
-num_vl_sustained = 0;
+num_vl_damped = 0;
+num_vl_sustained = 25;
 
 %num_vl_damped = 0.9*num_vl;
 %num_vl_sustained = 0.2*num_vl;
 
-num_dm_damped = 0*num_vl;
-num_dm_sustained = 1*num_dm;
+num_dm_damped = 0;
+num_dm_sustained = 75;
 
 num_damped = num_dm_damped + num_vl_damped;
 num_sustain = num_vl_sustained + num_dm_sustained;
 
-ligth_strength = 0.002;
+ligth_strength = 0.00;
 
 %pulse function
 x_fun = @(t)(step_on_end(t,30.5));
