@@ -16,19 +16,18 @@ num_dm = 0.75*num_cells;
 num_vl_damped = 0;
 num_vl_sustained = 25;
 
-%num_vl_damped = 0.9*num_vl;
-%num_vl_sustained = 0.2*num_vl;
+%80
 
-num_dm_damped = 0;
-num_dm_sustained = 75;
+num_dm_damped = 75;
+num_dm_sustained = 0;
 
 num_damped = num_dm_damped + num_vl_damped;
 num_sustain = num_vl_sustained + num_dm_sustained;
 
-ligth_strength = 0.00;
+ligth_strength = 0.005;
 
 %pulse function
-x_fun = @(t)(step_on_end(t,30.5));
+x_fun = @(t)(step_on_end(t,31.5));
 
 % grab sample of sustained / damped cells
 params_sustain = sustained_library(num_cells,1);
@@ -49,15 +48,15 @@ params = get_params(num_damped, num_sustain,params_damped, params_sustain);
 [t,z] = ode15s(@goodwin,0:0.1:2000, y,odeset('MaxStep',0.1),params,x_fun,num_cells,2,ligth_strength,light_sensitivity_indicator);
    
 % determine FRP
-p_mean = mean(z(18000:20000,1:num_cells),2);
-per = getPeriod(t(18000:20000), p_mean);
+p_mean = mean(z(4000:5000,1:num_cells),2);
+per = getPeriod(t(4000:5000), p_mean);
 
 figure;
 plot( t, z(:,1:num_cells));
 
 
 figure;
-plot( t(18000:20000), z(18000:20000,1:num_cells));
+plot( t(4000:5000), z(4000:5000,1:num_cells));
 
 hold on;
-plot( t(18000:20000), p_mean,'LineWidth',8);
+plot( t(4000:5000), p_mean,'LineWidth',8);
