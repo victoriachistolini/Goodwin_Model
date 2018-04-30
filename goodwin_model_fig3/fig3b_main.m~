@@ -27,7 +27,7 @@ num_sustain = num_vl_sustained + num_dm_sustained;
 ligth_strength = 0.002;
 
 %pulse function
-x_fun = @(t)(step_on_end(t,28.5));
+x_fun = @(t)(step_on_end(t,26));
 
 % grab sample of sustained / damped cells
 params_sustain = sustained_library(num_cells,1);
