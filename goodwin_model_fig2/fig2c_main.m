@@ -25,7 +25,7 @@ num_sustain = num_vl_sustained + num_dm_sustained;
 
 
 %pulse function
-x_fun = @(t)(step_on_end(t,33.5));
+x_fun = @(t)(step_on_end(t,28.3));
 
 % grab sample of sustained / damped cells
 params_sustain = sustained_library(num_cells,1);
@@ -52,6 +52,8 @@ p_vl_mean = mean(z(18000:20000,1:num_vl),2);
 p_dm_mean_sustained = mean(z(18000:20000,num_vl+1:num_dm_sustained+num_vl+1),2);
 p_dm_mean_damped = mean(z(18000:20000,num_dm_sustained+num_vl+1:num_cells),2);
 
+per = getPeriod(t(18000:20000), p_vl_mean);
+per2 = getPeriod(t(18000:20000), p_dm_mean_sustained);
 
 %figure;
 %plot( t, z(:,1:num_cells));
